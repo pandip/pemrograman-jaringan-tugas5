@@ -92,15 +92,22 @@ public class Tugas5Controller {
             if(JFileChooser.APPROVE_OPTION == loadFile.showOpenDialog(view)){
                 BufferedReader reader = null;
                 try{
+                    
+                    // membuat variabel 
                     int desimal; 
                     char ascii;
-                    
                     String line = null;
+                    
+                    // variabel untuk menghitung kata dan karakter
+                    // defaultnya 0
                     int wordCount = 0;
                     int charCount = 0;
                     
+                    // inisialisasi class LineNumberReader dan LineNumberInputStream
+                    // digunakan untuk menghitung baris, jumlah kata, dan jumlah karakter nanti
                     LineNumberReader numReader = new LineNumberReader(new FileReader(loadFile.getSelectedFile()));
                     LineNumberInputStream inputStream = new LineNumberInputStream(new FileInputStream(loadFile.getSelectedFile()));
+                    
                     reader = new BufferedReader(new FileReader(loadFile.getSelectedFile()));
                     
                     String data = null;
@@ -110,16 +117,19 @@ public class Tugas5Controller {
                         doc.insertString(doc.getLength(), "\n", null);
                     }
                     
+                    // melakukan penghitungan jumlah baris
                     while((desimal = inputStream.read()) != -1){
                         ascii = (char) desimal;
                     }
                     
+                    // melakukan penghitungan jumlah karakter dan jumlah kata
                     while((line = numReader.readLine()) != null){
                         String[] wordList = line.split("\\s");
                         wordCount += wordList.length;
                         charCount += line.length();
                     }
                     
+                    // pop up message yang menampilkan Jumlah baris, kata, dan karakter
                     JOptionPane.showMessageDialog(view, "File berhasil dibaca!" +
                             "\nJumlah baris     : " + (inputStream.getLineNumber() + 1) +
                             "\nJumlah kata      : " + (wordCount) +
